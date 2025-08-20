@@ -21,7 +21,7 @@ const About = () => {
         <img
           src={assets.brand_img}
           alt="brand"
-          className="w-full sm:w-1/2 max-w-lg rounded-lg shadow-md"
+          className="w-full sm:w-1/2 max-w-lg rounded-lg"
         />
 
         {/* Text & Stats */}
@@ -58,6 +58,9 @@ const About = () => {
             and more recently with desktop publishing software like Aldus
             PageMaker including versions of Lorem Ipsum.
           </p>
+          <button className="bg-blue-600 text-white px-8 py-2 my-5 rounded cursor-pointer">
+            Learn more
+          </button>
         </div>
       </div>
     </div>
