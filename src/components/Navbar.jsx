@@ -4,7 +4,7 @@ const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   useEffect(() => {
-    if (setShowMobileMenu) {
+    if (showMobileMenu) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
@@ -21,13 +21,16 @@ const Navbar = () => {
           <a href="#Header" className="cursor-pointer hover:text-gray-400">
             Home
           </a>
-          <a href="#Header" className="cursor-pointer hover:text-gray-400">
+          <a href="#About" className="cursor-pointer hover:text-gray-400">
             About
           </a>
-          <a href="#Header" className="cursor-pointer hover:text-gray-400">
+          <a href="#Projects" className="cursor-pointer hover:text-gray-400">
             Projects
           </a>
-          <a href="#Header" className="cursor-pointer hover:text-gray-400">
+          <a
+            href="#Testimonials"
+            className="cursor-pointer hover:text-gray-400"
+          >
             Testimonials
           </a>
         </ul>
