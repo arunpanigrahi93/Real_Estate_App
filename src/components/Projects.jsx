@@ -1,9 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { assets, projectsData } from "../assets/assets";
 
 const Projects = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const cardsToShow = 4; // fixed 4 cards visible
+  const [cardsToShow, setCardsToShow] = useState(4); // default desktop
+
+  // ✅ Handle responsive cardsToShow
+  useEffect(() => {
+    const updateCardsToShow = () => {
+      if (window.innerWidth < 640) {
+        setCardsToShow(1); // mobile
+      } else if (window.innerWidth < 1024) {
+        setCardsToShow(2); // tablet
+      } else if (window.innerWidth < 1280) {
+        setCardsToShow(3); // small desktop
+      } else {
+        setCardsToShow(4); // large desktop
+      }
+    };
+
+    updateCardsToShow();
+    window.addEventListener("resize", updateCardsToShow);
+
+    return () => window.removeEventListener("resize", updateCardsToShow);
+  }, []);
 
   const nextProject = () => {
     setCurrentIndex((prevIndex) =>
@@ -62,17 +82,15 @@ const Projects = () => {
             <div
               key={index}
               className="relative flex-shrink-0"
-              style={{ width: `${100 / cardsToShow}%` }} // 👈 fix width so exactly 4 fit
+              style={{ width: `${100 / cardsToShow}%` }} // responsive width
             >
               <div className="p-4">
-                {" "}
-                {/* spacing inside card */}
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-auto mb-6"
+                  className="w-full h-auto mb-6 rounded-lg shadow"
                 />
-                <div className="bg-white px-4 py-2 shadow-md">
+                <div className="bg-white px-4 py-2 shadow-md rounded">
                   <h2 className="text-lg font-semibold text-gray-800">
                     {project.title}
                   </h2>
